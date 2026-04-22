@@ -1,0 +1,24 @@
+
+window {
+  border-radius: 20;
+  opacity: 0.97;
+  /*border: 2px solid @border-color;*/
+
+  background-color: #1e1e2e;
+}
+
+label {
+  font-family: 'Rubik';
+  font-size: 11pt;
+
+  color: #f9e2af;
+}
+
+image {
+  color: #f9e2af;
+}
+
+
+progress {
+  background-color: #f9e2af;
+}

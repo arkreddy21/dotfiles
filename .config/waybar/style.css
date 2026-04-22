@@ -1,0 +1,350 @@
+@import "mocha.css";
+
+* {
+    color: @text;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    font-family: "Hack Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    /*   border: 1px solid @blue; */
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#workspaces {
+    background-color: @base;
+    opacity: 1;
+    border-radius: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
+    /* padding-left: 6px; */
+    /* padding-right: 6px; */
+}
+
+#workspaces button {
+    box-shadow: none;
+    text-shadow: none;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+#workspaces button:hover {
+   background: @surface2;
+}
+
+#workspaces button.active {
+    background: @mauve;
+}
+
+#workspaces button.active label {
+    color: @base;
+}
+
+#mode {
+    color: #ebcb8b;
+}
+
+#clock,
+#custom-swap,
+#custom-changewaybar,
+#custom-cava-internal,
+#battery,
+#cpu,
+#memory,
+#idle_inhibitor,
+#temperature,
+#custom-keyboard-layout,
+#language,
+#toggles,
+#controls,
+#custom-swaync,
+#mode,
+#tray,
+#custom-power,
+#custom-pacman,
+#custom-launcher,
+#mpd {
+    /* padding: 5px 8px; */
+    padding-left: 8px;
+    padding-right: 8px;
+    border-style: solid;
+    background-color: @base;
+    opacity: 1;
+    /* margin: 8px 0; */
+}
+
+#pulseaudio,
+#backlight,
+#idle_inhibitor,
+#network,
+#bluetooth,
+#power-profiles-daemon {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+#mpd {
+    border-radius: 10px;
+    color: @mauve;
+    margin-left: 5px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#mpd.2 {
+    border-radius: 10px 0px 0px 10px;
+    /* margin: 8px 0px 8px 6px; */
+    /* padding: 4px 12px 4px 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#mpd.3 {
+    border-radius: 0px 0px 0px 0px;
+    /* margin: 8px 0px 8px 0px; */
+    /* padding: 4px; */
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#mpd.4 {
+    border-radius: 0px 10px 10px 0px;
+    /* margin: 8px 0px 8px 0px; */
+    /* padding: 4px 10px 4px 14px; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#mpd.2,
+#mpd.3,
+#mpd.4 {
+    background-color: @base;
+    font-size: 14px;
+}
+
+#custom-cava-internal {
+    border-radius: 10px;
+    color: @mauve;
+}
+
+#custom-swap {
+    border-radius: 10px;
+    color: @base;
+    margin-left: 5px;
+    background-color: @mauve;
+}
+
+#custom-changewaybar {
+    border-radius: 10px;
+    color: @base;
+    margin-left: 5px;
+    background-color: @mauve;
+}
+
+#clock {
+    /* background-color:#a3be8c; */
+    color: @mauve;
+    border-radius: 10px;
+    /* margin: 8px 10px; */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#backlight,
+#idle_inhibitor {
+    color: @yellow;
+    /* border-bottom: 2px solid @yellow; */
+    /* border-radius: 10px; */
+}
+
+#battery {
+    color: @lavender;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+@keyframes blink {
+    to {
+        color: @red;
+        /* border-bottom: 2px solid @red; */
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: @peach;
+    /* border-bottom: 2px solid #bf616a; */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    color: @lavender;
+}
+
+#cpu {
+    color: @sky;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#cpu #cpu-icon {
+    color: @sky;
+}
+
+#memory {
+    color: @sky;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#network.disabled {
+    color: #bf616a;
+    /* border-bottom: 2px solid #bf616a; */
+}
+
+#network {
+    color: @green;
+    /* border-bottom: 2px solid @green; */
+    /* border-radius: 10px;
+  margin-right: 10px; */
+}
+
+#network.disconnected {
+    color: #bf616a;
+    /* border-bottom: 2px solid #bf616a; */
+}
+
+#bluetooth {
+    color: @blue;
+    /* border-radius: 10px;
+  margin-right: 10px; */
+}
+
+#pulseaudio {
+    color: @flamingo;
+    /* border-radius: 10px; */
+    /* margin-right: 10px; */
+}
+
+#temperature {
+    color: @teal;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#temperature.critical {
+    color: @red;
+    /* border-bottom: 2px solid @red; */
+}
+
+#tray {
+    /* background-color: @base; */
+    /* margin: 8px 10px; */
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+#custom-launcher {
+    background-color: @mauve;
+    /* background-image: url("/home/lightcrimson/.config/icons/svg/arch.svg");
+ * background-position: center;
+ * background-repeat: no-repeat;
+ * background-size: contain;  */
+    color: @base;
+    border-radius: 10px;
+    /* padding: 5px 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+}
+
+#custom-power {
+    color: @base;
+    background-color: @red;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 15px;
+    /* padding: 5px 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#window,
+#mpris {
+    background-color: @base;
+    /* border-style: hidden; */
+    border-radius: 10px;
+    /* padding: 8px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    /* margin: 10px; */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#custom-keyboard-layout {
+    color: @peach;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#language {
+    color: @peach;
+    /* border-bottom: 2px solid @peach; */
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+tooltip {
+    background: @base;
+    color: @text;
+    border-radius: 7px;
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: @mauve;
+    padding-right: 5px;
+    padding-left: 5px;
+    /* padding-top: 5px; */
+    /* padding-bottom: 5px; */
+}
+
+#toggles,
+#controls,
+#custom-swaync {
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+
+/* Hover effect for toggle modules */
+/*#pulseaudio:hover,
+#backlight:hover,
+#network:hover,
+#bluetooth:hover,
+#power-profiles-daemon:hover,
+#idle_inhibitor:hover {
+    background: @surface2;
+    transition: all 0.2s ease-in-out;
+}*/

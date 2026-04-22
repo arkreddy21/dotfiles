@@ -1,0 +1,286 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "modules-left": ["hyprland/workspaces", "hyprland/window", "mpris"],
+  "fixed-center": true,
+  "modules-center": ["clock"],
+  "modules-right": [
+    // "cpu",
+    // "memory",
+    // "custom/player",
+    "tray",
+    "group/controls",
+    "group/toggles",
+    "battery",
+    "custom/swaync",
+  ],
+
+  "group/toggles": {
+    "orientation": "horizontal",
+    "modules": ["network", "bluetooth", "power-profiles-daemon"],
+  },
+
+  "group/controls": {
+    "orientation": "horizontal",
+    "modules": ["pulseaudio", "backlight", "idle_inhibitor"],
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 50,
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon} {windows}",
+    "format-window-separator": " ",
+    "format-icons": {
+      // explicitly map your regular workspaces if you want them to remain numbers
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "11",
+      "12": "12",
+      "13": "13",
+      "14": "14",
+      "15": "15",
+      "16": "16",
+      "17": "17",
+      "18": "18",
+      "19": "19",
+      "20": "20",
+      // Default icon for any other unmapped workspaces
+      // "urgent": "",
+      // "special": "",
+      // "empty": "",
+      "default": ""
+    },
+
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "class<zen>": "",
+      "Nautilus": "",
+      "code": "󰨞",
+      "zed": "",
+      "Antigravity": "",
+      "discord": "",
+      "kitty": "󰞷",
+      "Obsidian": "󰠮",
+      "Papers": "󰈙",
+      "SpeedCrunch": "󰪚",
+      "Steam": "󰓓",
+      "FreeCAD": "",
+      "BambuStudio": "󰹛",
+      // Hiding an app? Map it to an empty string (See section 3)
+      // "Papers": ""
+    },
+    "show-special": true,
+    "special-visible-only": true,
+  },
+
+  // "hyprland/workspaces": {
+  //   "sort-by-name": true,
+  //   "format": "{icon}",
+  //   "show-special": true,
+  //   "special-visible-only": false,
+  //   "persistent-workspaces": {
+  //     "*": 5,
+  //   },
+  //   "on-click": "activate",
+  //   "format-icons": {
+  //     "urgent": "",
+  //     "special": "",
+  //     "empty": "",
+  //     "default": "",
+  //   },
+  // },
+  "mpris": {
+    "format": " {player_icon} {title} - {artist} ",
+    "format-paused": "{status_icon} {title} - {artist}",
+
+    "player-icons": {
+      "default": "<span foreground='#cba6f7'>󰝚 </span>",
+      //"spotify": "<span foreground='#a6e3a1'>󰓇 </span>",
+      //"firefox": "<span foreground='#f38ba8'>󰗃 </span>"
+    },
+    "status-icons": {
+      "paused": "<span color='#b4befe'>\u200A\u200A󰏤\u2009\u2009</span>",
+    },
+
+    "tooltip-format": "Playing: {title} - {artist}",
+    "tooltip-format-paused": "Paused: {title} - {artist}",
+
+    "max-length": 50,
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 14,
+  },
+  "clock": {
+    "interval": 60,
+    "format": "\uef38  {:%A, %B %d  \udb82\udd54  %I:%M %p}",
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 4,
+      "format": {
+        //mocha colors - sapphire, text, peach, blue
+        "months": "<span color='#74c7ec' ><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weekdays": "<span color='#fab387'><b>{}</b></span>",
+        "today": "<span color='#89b4fa'><b>{}</b></span>",
+      },
+    },
+    "actions": {
+      "on-click-middle": "shift_reset",
+      "on-click": "shift_up",
+      "on-click-right": "shift_down",
+    },
+  },
+
+  "pulseaudio": {
+    "format": "{icon}{format_source}",
+    "format-muted": " {format_source}",
+    "format-bluetooth": "{icon}{format_source}",
+    "format-bluetooth-muted": " {format_source}",
+    "format-source": "",
+    "format-source-muted": "  ",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "default": ["", "", ""],
+    },
+    "tooltip-format": "{icon} {volume}%",
+    "on-click": "kitty --class=wiremix -e wiremix -v output",
+    "reverse-scrolling": true,
+    "scroll-step": 0.4,
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip-format": "{icon} {percent}%",
+    "reverse-scrolling": true,
+    "scroll-step": 0.4,
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰈈",
+      "deactivated": "󰈉",
+    },
+  },
+
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "",
+    "format-disconnected": "󰤫",
+    "format-disabled": "󰤮",
+
+    "tooltip-format": "{icon} {essid} ({frequency} GHz) \n󰩟 {ipaddr}",
+    "tooltip-format-ethernet": "󰩟 {ipaddr} \n⇣ {bandwidthDownBytes}  ⇡ {bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disabled": "Off",
+
+    "interval": 10,
+    "spacing": 1,
+    //"on-click": "plasmawindowed org.kde.plasma.networkmanagement",
+    "on-click-middle": "rfkill toggle wifi",
+    "on-click": "XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi",
+  },
+  "bluetooth": {
+    "format-on": "",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱 󰥉{device_battery_percentage}%",
+
+    "tooltip-format": " {status}",
+    "tooltip-format-connected": " {num_connections} {status}\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "󰥉{device_battery_percentage}% {device_alias}",
+
+    //"on-click": "plasmawindowed org.kde.plasma.bluetooth",
+    //"on-click": "gnome-control-center bluetooth",
+    //"on-click": "blueberry"
+    "on-click": "kitty --class=bluetui -e bluetui",
+    "on-click-middle": "bluetoothctl power $(bluetoothctl show | grep -q \"Powered: yes\" && echo off || echo on)",
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "",
+      "balanced": "",
+      "power-saver": "",
+    },
+  },
+
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󰂄",
+    "format-alt": "{time} {icon}",
+    "format-icons": [" ", " ", " ", " ", " "],
+  },
+
+  "cpu": {
+    "format": "{usage}%  ",
+    "tooltip": true,
+  },
+  "memory": {
+    "interval": 30,
+    "format": "{used}G  ",
+    "tooltip-format": "{used} / {total} G",
+  },
+  "disk": {
+    "interval": 600,
+    "format": " {percentage_used}%",
+    "tooltip-format": "{used} used out of {total} on {path} ",
+  },
+
+  "custom/swaync": {
+    "tooltip": true,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+  },
+  // "custom/player": {
+  // 	"format": "󰎆 {}",
+  // 	"interval": 5,
+  // 	"exec": "$HOME/.config/waybar/bin/playerinfo",
+  // 	"max-length": 40,
+  // 	"tooltip": true
+  // }
+}

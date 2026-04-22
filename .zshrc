@@ -101,7 +101,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 #-----------------------------
 
-# source ~/.secrets
+source ~/.secrets
 
 # opencode
 export PATH=/home/arkreddy/.opencode/bin:$PATH

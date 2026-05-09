@@ -78,6 +78,10 @@
       "Steam": "󰓓",
       "FreeCAD": "",
       "BambuStudio": "󰹛",
+      "libreoffice-impress": "",
+      "libreoffice-writer": "",
+      "libreoffice-draw": "",
+      "libreoffice-calc": "",
       // Hiding an app? Map it to an empty string (See section 3)
       // "Papers": ""
     },
@@ -196,8 +200,8 @@
     "interval": 10,
     "spacing": 1,
     //"on-click": "plasmawindowed org.kde.plasma.networkmanagement",
-    "on-click-middle": "rfkill toggle wifi",
-    "on-click": "XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi",
+    "on-click-middle": "nmcli radio wifi | grep -q 'enabled' && nmcli radio wifi off || nmcli radio wifi on",
+    "on-click": "kitty --class=wlctl -e wlctl",
   },
   "bluetooth": {
     "format-on": "",

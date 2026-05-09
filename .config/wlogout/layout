@@ -5,22 +5,16 @@
     "keybind" : "l"
 }
 {
-    "label" : "logout",
-    "action" : "hyprctl clients -j | jq -r '.[].pid' | xargs kill; pkill Hyprland || pkill sway || pkill niri || loginctl terminate-user $USER",
-    "text" : "logout",
-    "keybind" : "e"
-}
-{
     "label" : "shutdown",
     "action" : "hyprctl clients -j | jq -r '.[].pid' | xargs kill; systemctl poweroff || loginctl poweroff",
     "text" : "power_settings_new",
-    "keybind" : "s"
+    "keybind" : "p"
 }
 {
     "label" : "suspend",
     "action" : "systemctl suspend || loginctl suspend",
     "text" : "bedtime",
-    "keybind" : "u"
+    "keybind" : "s"
 }
 {
     "label" : "reboot",
@@ -29,8 +23,14 @@
     "keybind" : "r"
 }
 {
+    "label" : "logout",
+    "action" : "hyprctl clients -j | jq -r '.[].pid' | xargs kill; pkill Hyprland || pkill sway || pkill niri || loginctl terminate-user $USER",
+    "text" : "logout",
+    "keybind" : "e"
+}
+{
     "label" : "task-manager",
-    "action" : "flatpak run io.missioncenter.MissionCenter",
+    "action" : "kitty -e btop",
     "text" : "browse_activity",
     "keybind" : "t"
 }

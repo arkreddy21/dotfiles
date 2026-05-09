@@ -5,22 +5,22 @@
 }
 
 window {
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0);
 }
-
+/*mocha themed*/
 button {
 	font-family: 'Material Symbols Rounded';
 	font-size: 10rem;
 	font-weight: 700;
-	background-color: #313244;
-	color: #FFFFFF;
+	background-color: #1e1e2e;
+	color: #cdd6f4;
 	margin: 2rem;
-	border-radius: 2rem;
+	border-radius: 4rem;
 	padding: 3rem;
 }
 
 button:focus,
 button:active {
-	background-color: #cba6f7;
+	background-color: #f38ba8;
 	border-radius: 4rem;
 }

@@ -21,7 +21,7 @@ export PATH=$PATH:~/.local/bin:~/.cargo/bin
 
 ######## Aliases ########
 # alias ls='ls --color'
-alias ls='eza --hyperlink --icons '
+alias l='eza --hyperlink --icons '
 alias s="sudo "
 alias c="clear"
 alias gte="gnome-text-editor "
@@ -83,13 +83,15 @@ zinit light-mode for \
 # use zinit self-update to update
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
+# Completions - load before compinit, no turbo
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-syntax-highlighting
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -C
 zinit cdreplay -q
+
 
 # bindkey -e
 bindkey '^p' history-search-backward
@@ -102,9 +104,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 #-----------------------------
 
 source ~/.secrets
-
-# opencode
-export PATH=/home/arkreddy/.opencode/bin:$PATH
 
 
 ################# Handy commands #############

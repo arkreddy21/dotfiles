@@ -66,11 +66,32 @@ hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "d" }))
 
 -- Window split ratio
-hl.bind("SUPER + Semicolon", hl.dsp.layout("splitratio -0.1"), { repeating = true }) -- Dwindle
-hl.bind("SUPER + Apostrophe", hl.dsp.layout("splitratio +0.1"), { repeating = true })
+-- hl.bind("SUPER + Semicolon", hl.dsp.layout("splitratio -0.1"), { repeating = true }) -- Dwindle
+-- hl.bind("SUPER + Apostrophe", hl.dsp.layout("splitratio +0.1"), { repeating = true })
 -- hl.bind("SUPER + Semicolon", hl.dsp.layout("mfact -0.1"), { repeating = true }) -- For Master layout
 -- hl.bind("SUPER + Apostrophe", hl.dsp.layout("mfact +0.1"), { repeating = true })
 -- gives runtime errors
+
+-- Layout-safe split resize
+local function resize_split(delta)
+    local ws = hl.get_active_workspace()
+    if not ws then
+        return
+    end
+
+    local layout = ws.tiled_layout
+
+    if layout == "master" then
+        hl.dispatch(hl.dsp.layout("mfact " .. delta))
+    elseif layout == "dwindle" then
+        hl.dispatch(hl.dsp.layout("splitratio " .. delta))
+    end
+    -- other layouts: do nothing
+end
+
+hl.bind(mainMod .. " + Semicolon", function() resize_split("-0.1") end, { repeating = true })
+hl.bind(mainMod .. " + Apostrophe", function() resize_split("+0.1") end, { repeating = true })
+
 
 -- Positioning mode
 hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))

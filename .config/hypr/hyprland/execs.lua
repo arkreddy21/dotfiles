@@ -7,12 +7,13 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
   -- hl.exec_cmd("systemctl --user start hyprpolkitagent")
 
-  hl.exec_cmd("qs -c noctalia-shell")
   hl.exec_cmd("hyprpm reload")
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("hypridle")
   hl.exec_cmd("clipse -listen")
-  -- hl.exec_cmd("waybar & swaync & swayosd-server")
+  hl.exec_cmd("waybar")
+  hl.exec_cmd("swaync")
+  hl.exec_cmd("swayosd-server")
   -- hl.exec_cmd("qs -c $qsConfig")
 
 

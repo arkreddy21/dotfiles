@@ -19,6 +19,7 @@
   "remove_trailing_whitespace_on_save": false,
   "disable_ai": false,
   "agent": {
+    "sidebar_side": "right",
     "dock": "right",
     "single_file_review": true,
     "default_profile": "ask",

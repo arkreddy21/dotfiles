@@ -1,6 +1,0 @@
-primary = "rgb(5e81ac)"
-surface = "rgb(eceff4)"
-secondary = "rgb(64adc2)"
-error = "rgb(bf616a)"
-tertiary = "rgb(6fa9a8)"
-surface_lowest = "rgb(eaedf3)"

@@ -12,12 +12,18 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/arkreddy/.zshrc'
+zstyle :compinstall filename '/home/arama/.zshrc'
 # End of lines added by compinstall
 
-export TERMINAL=kitty
+#export TERMINAL=kitty
 export BAT_THEME="Solarized (dark)"
-export PATH=$PATH:~/.local/bin:~/.cargo/bin
+#export PATH=$PATH:~/.local/bin:~/.cargo/bin
+export PATH=$PATH:~/.local/bin
+export PATH=~/.npm-global/bin:$PATH
+
+export UV_PYTHON_PREFERENCE=system
+export MANPAGER='nvim +Man!'
+
 
 ######## Aliases ########
 # alias ls='ls --color'
@@ -28,10 +34,12 @@ alias gte="gnome-text-editor "
 alias py="python "
 alias pn="pnpm "
 alias zed="zeditor "
-alias set-intel="sudo envycontrol -s integrated"
-alias set-hybrid="sudo envycontrol -s hybrid"
+# alias set-intel="sudo envycontrol -s integrated"
+# alias set-hybrid="sudo envycontrol -s hybrid"
 alias ff="fastfetch"
 alias db="distrobox "
+alias yay="paru "
+alias sys='systemctl '
 
 alias nap="systemctl suspend"
 alias die="poweroff"
@@ -96,6 +104,8 @@ zinit cdreplay -q
 # bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
 
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'

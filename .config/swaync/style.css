@@ -4,6 +4,7 @@
   font-family: "Hack Nerd Font";
   font-weight: bold;
   transition: 200ms;
+  /*notification-icon-size: 64,*/
 }
 
 trough highlight {
@@ -225,6 +226,7 @@ scrollbar trough {
   background: #313244;
   border-radius: 12.6px;
   color: #cdd6f4;
+  margin-bottom: 24px;
 }
 
 .mpris-overlay {
@@ -305,21 +307,23 @@ scrollbar trough {
 }
 
 .widget-volume label {
-  color: #74c7ec;
+  font-size: 1.5rem;
+  color: #89b4fa;
   padding: 0 1rem;
 }
 
 .widget-volume trough highlight {
-  background: #74c7ec;
+  background: #89b4fa;
 }
 
 .widget-backlight trough highlight {
-  background: #f9e2af;
+  background: #89b4fa;
 }
 
 .widget-backlight label {
   font-size: 1.5rem;
-  color: #f9e2af;
+  color: #89b4fa;
+  padding: 0 1rem;
 }
 
 .widget-backlight .KB {

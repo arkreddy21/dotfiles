@@ -1,7 +1,7 @@
 -- ############ Themes #############
--- hl.env("QT_QPA_PLATFORMTHEME", "hyprqt6engine") -- kde (or) gnome with qgnomeplatform-qt(5/6)-git installed
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct") -- kde (or) gnome with qgnomeplatform-qt(5/6)-git installed
 -- hl.env("GTK_THEME", "Adwaita:light")
--- hl.env("ICON_THEME", "Adwaita")
+hl.env("ICON_THEME", "Papirus")
 -- hl.env("QT_STYLE_OVERRIDE", "kvantum")
 -- hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 
@@ -20,11 +20,11 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 
 -- Try Hyprcursor
 -- https://sakshatshinde.github.io/hyprcursor-themes/
-hl.env("XCURSOR_THEME", "Vimix-cursors")
+--hl.env("XCURSOR_THEME", "Vimix-cursors")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
-hl.env("QT_QPA_PLATFORM", "wayland")
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
 

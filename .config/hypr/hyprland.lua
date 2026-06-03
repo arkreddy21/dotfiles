@@ -3,10 +3,15 @@ require("hyprland.execs")
 require("hyprland.rules")
 require("hyprland.keybinds")
 
-local primary = "rgb(cba6f7)"   --mocha mauve
-local surface = "rgb(1e1e2e)"   -- mocha base
+-- local primary = "rgb(cba6f7)"   --mocha mauve
+-- local surface = "rgb(1e1e2e)"   -- mocha base
+-- local secondary = "rgb(89dceb)" -- mocha sky
+-- local error = "rgb(f38ba8)"     --mocha red
+
+local primary = "rgb(8fbcbb)"   -- nord 7
+local surface = "rgb(eceff4)"   -- nord 6
 local secondary = "rgb(89dceb)" -- mocha sky
-local error = "rgb(f38ba8)"     --mocha red
+local error = "rgb(bf616a)"     --nord red
 
 ----------------
 --- Monitors ---
@@ -104,7 +109,7 @@ hl.config({
     misc = {
         disable_hyprland_logo = true,      -- If true disables the random hyprland logo / anime girl background. :(
         force_default_wallpaper = 0,       -- Set to 0 or 1 to disable the anime mascot wallpapers
-        font_family = "Rubik",
+        --font_family = "Noto Sans",
         vrr = 1,
         mouse_move_enables_dpms = true,    --switch to false to prevent accidental wake up
         key_press_enables_dpms = true,

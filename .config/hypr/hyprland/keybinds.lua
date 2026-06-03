@@ -3,8 +3,9 @@
 
 local mainMod = "SUPER"
 -- Set programs that you use
-local terminal = "kitty"
-local fileManager = "nautilus /home/arkreddy/Documents/Books/Masters"
+local terminal = "konsole"
+-- local fileManager = "nautilus /home/arkreddy/Documents/Books/Masters"
+local fileManager = "dolphin"
 local browser = "zen-browser"
 local menu = "rofi -show drun"
 local taskmanager = "kitty -e btop"
@@ -16,7 +17,7 @@ local taskmanager = "kitty -e btop"
 hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd("wlogout -p layer-shell"))
 
-hl.bind(mainMod .. " + X", hl.dsp.window.kill())
+hl.bind(mainMod .. " + X",  hl.dsp.window.close())
 hl.bind(mainMod .. " + ALT + M", hl.dsp.exit())
 
 hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("loginctl lock-session"))
@@ -33,11 +34,12 @@ hl.bind("CTRL + SHIFT + Print", hl.dsp.exec_cmd([[grim -g "$(slurp $SLURP_ARGS)"
 -- Color picker
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a")) -- Pick color (Hex) >> clipboard
 -- Recording stuff
-hl.bind("SUPER + ALT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh --fullscreen-sound"), { description = "Record screen (with sound)" }) -- Record screen (with sound)
-hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh --fullscreen"), { description = "Record screen (no sound)" }) -- Record screen (no sound)
-hl.bind("SUPER + SHIFT + CTRL + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh"), { description = "Record region (no sound)" }) -- Record region (no sound)
+hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh --fullscreen-sound"), { description = "Record screen (with sound)" }) -- Record screen (with sound)
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh --fullscreen"), { description = "Record screen (no sound)" }) -- Record screen (no sound)
+hl.bind(mainMod .. " + SHIFT + CTRL + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh"), { description = "Record region (no sound)" }) -- Record region (no sound)
 -- Screenshots
-hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region")) -- Screenshot a region
+-- hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region")) -- Screenshot a region
+hl.bind("Print", hl.dsp.exec_cmd("flameshot gui")) -- Screenshot a region
 hl.bind("CTRL + Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only")) -- Screenshot a region to clipboard only
 hl.bind("SUPER + Print", hl.dsp.exec_cmd("hyprshot -m window")) -- Screenshot a window
 hl.bind("SUPER + CTRL + Print", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only")) -- Screenshot a window to clipboard only
@@ -50,16 +52,16 @@ hl.bind("ALT + CTRL + Print", hl.dsp.exec_cmd("hyprshot -m output -m eDP-1 --cli
 -- ##! Window management
 
 --/# bind = Super+Shift, ←/↑/→/↓,, # Window: move in direction
-hl.bind("SUPER + SHIFT + Left", hl.dsp.window.swap({ direction = "l" }))
-hl.bind("SUPER + SHIFT + Right", hl.dsp.window.swap({ direction = "r" }))
-hl.bind("SUPER + SHIFT + Up", hl.dsp.window.swap({ direction = "u" }))
-hl.bind("SUPER + SHIFT + Down", hl.dsp.window.swap({ direction = "d" }))
+hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.window.swap({ direction = "l" }))
+hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.swap({ direction = "r" }))
+hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.window.swap({ direction = "u" }))
+hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.window.swap({ direction = "d" }))
 
 --/# bind = Super, ←/↑/→/↓,, # Focus in direction
-hl.bind("SUPER + Left", hl.dsp.focus({ direction = "l" }))
-hl.bind("SUPER + Right", hl.dsp.focus({ direction = "r" }))
-hl.bind("SUPER + Up", hl.dsp.focus({ direction = "u" }))
-hl.bind("SUPER + Down", hl.dsp.focus({ direction = "d" }))
+hl.bind(mainMod .. " + Left", hl.dsp.focus({ direction = "l" }))
+hl.bind(mainMod .. " + Right", hl.dsp.focus({ direction = "r" }))
+hl.bind(mainMod .. " + Up", hl.dsp.focus({ direction = "u" }))
+hl.bind(mainMod .. " + Down", hl.dsp.focus({ direction = "d" }))
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "r" }))
 hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "u" }))
@@ -94,10 +96,10 @@ hl.bind(mainMod .. " + Apostrophe", function() resize_split("+0.1") end, { repea
 
 
 -- Positioning mode
-hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
-hl.bind("SUPER + D", hl.dsp.window.fullscreen({ mode = "maximized" })) -- maximize
-hl.bind("SUPER + ALT + Space", hl.dsp.window.float())
-hl.bind("SUPER + P", hl.dsp.window.pin()) -- Pin
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind(mainMod .. " + D", hl.dsp.window.fullscreen({ mode = "maximized" })) -- maximize
+hl.bind(mainMod .. " + ALT + Space", hl.dsp.window.float())
+hl.bind(mainMod .. " + P", hl.dsp.window.pin()) -- Pin
 hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit")) -- dwindle
 hl.bind(mainMod .. " + B", hl.dsp.layout("swapwithmaster")) -- master
 -- Move/resize windows with mainMod + LMB/RMB and dragging
@@ -159,26 +161,26 @@ hl.bind(mainMod .. " + ALT + SHIFT + 9", hl.dsp.window.move({ workspace = "19", 
 hl.bind(mainMod .. " + ALT + SHIFT + 0", hl.dsp.window.move({ workspace = "20", follow = true }))
 
 --/# bind = Super+Alt, Hash,, # Window: move to workspace # (1, 2, 3, 4, ...)
-hl.bind("SUPER + CTRL + SHIFT + 1", hl.dsp.window.move({ workspace = "1", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 2", hl.dsp.window.move({ workspace = "2", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 3", hl.dsp.window.move({ workspace = "3", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 4", hl.dsp.window.move({ workspace = "4", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 5", hl.dsp.window.move({ workspace = "5", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 6", hl.dsp.window.move({ workspace = "6", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 7", hl.dsp.window.move({ workspace = "7", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 8", hl.dsp.window.move({ workspace = "8", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 9", hl.dsp.window.move({ workspace = "9", follow = false }))
-hl.bind("SUPER + CTRL + SHIFT + 0", hl.dsp.window.move({ workspace = "10", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 1", hl.dsp.window.move({ workspace = "1", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 2", hl.dsp.window.move({ workspace = "2", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 3", hl.dsp.window.move({ workspace = "3", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 4", hl.dsp.window.move({ workspace = "4", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 5", hl.dsp.window.move({ workspace = "5", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 6", hl.dsp.window.move({ workspace = "6", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 7", hl.dsp.window.move({ workspace = "7", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 8", hl.dsp.window.move({ workspace = "8", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 9", hl.dsp.window.move({ workspace = "9", follow = false }))
+hl.bind(mainMod .. " + CTRL + SHIFT + 0", hl.dsp.window.move({ workspace = "10", follow = false }))
 
 --/# bind = Super, Page_↑/↓,, # Workspace: focus left/right
-hl.bind("SUPER + Page_Down", hl.dsp.focus({ workspace = "r+1" }))
-hl.bind("SUPER + Page_Up", hl.dsp.focus({ workspace = "r-1" }))
+hl.bind(mainMod .. " + Page_Down", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mainMod .. " + Page_Up", hl.dsp.focus({ workspace = "r-1" }))
 
 --/# bind = Super+Shift, Page_↑/↓,, # Window: move to workspace left/right
-hl.bind("SUPER + SHIFT + Page_Down", hl.dsp.window.move({ workspace = "r+1", follow = true }))
-hl.bind("SUPER + SHIFT + Page_Up", hl.dsp.window.move({ workspace = "r-1", follow = true }))
-hl.bind("SUPER + ALT + Page_Down", hl.dsp.window.move({ workspace = "r+1", follow = false }))
-hl.bind("SUPER + ALT + Page_Up", hl.dsp.window.move({ workspace = "r-1", follow = false }))
+hl.bind(mainMod .. " + SHIFT + Page_Down", hl.dsp.window.move({ workspace = "r+1", follow = true }))
+hl.bind(mainMod .. " + SHIFT + Page_Up", hl.dsp.window.move({ workspace = "r-1", follow = true }))
+hl.bind(mainMod .. " + ALT + Page_Down", hl.dsp.window.move({ workspace = "r+1", follow = false }))
+hl.bind(mainMod .. " + ALT + Page_Up", hl.dsp.window.move({ workspace = "r-1", follow = false }))
 
 -- ###### Extra binds ############################################
 -- hl.bind("CTRL + SUPER + SHIFT + Right", hl.dsp.window.move({ workspace = "r+1", follow = true }))
@@ -222,7 +224,7 @@ hl.bind(mainMod .. " + grave", hl.dsp.exec_cmd("hyprctl dispatch 'hyprexpo:expo 
 -- Clipboard manager - clipse
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[kitty --class clipse -e 'clipse']]))
 -- character selector
-hl.bind("SUPER + Period", hl.dsp.exec_cmd("flatpak run org.gnome.Characters"))
+hl.bind("SUPER + Period", hl.dsp.exec_cmd("rofimoji"))
 
 -- Audio stuff
 hl.bind(mainMod .. " + XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_SOURCE@ toggle"), { locked = true })

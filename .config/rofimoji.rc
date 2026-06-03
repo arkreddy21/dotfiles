@@ -1,4 +1,5 @@
-action = copy
+action = type
 files = [emojis, math]
-skin-tone = neutral
-
+skin-tone = moderate
+prompt = "󰞅 Emoji"
+max-recent = 6

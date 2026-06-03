@@ -108,6 +108,7 @@
   "mpris": {
     "format": " {player_icon} {title} - {artist} ",
     "format-paused": "{status_icon} {title} - {artist}",
+    // "on-click": "~/.config/waybar/mediaplayer-popup.py --toggle",
 
     "player-icons": {
       "default": "<span foreground='#cba6f7'>󰝚 </span>",
@@ -280,6 +281,20 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true,
   },
+  // "custom/mediaplayer": {
+  //     "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{album}}\"}' -F 2>/dev/null",
+  //     "return-type": "json",
+  //     "on-click": "~/.config/waybar/mediaplayer-popup.py --toggle",
+  //     "interval": "once",
+  //     "format": "󰎈  {}"
+  // },
+  // "custom/media-popup": {
+  //     "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{album}}\"}' -F 2>/dev/null",
+  //     "return-type": "json",
+  //     "on-click": "~/.config/waybar/mediaplayer-popup.py --toggle",
+  //     "interval": "once",
+  //     "format": "󰎈  {}"
+  // }
   // "custom/player": {
   // 	"format": "󰎆 {}",
   // 	"interval": 5,

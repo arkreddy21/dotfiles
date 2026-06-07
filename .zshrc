@@ -16,7 +16,7 @@ zstyle :compinstall filename '/home/arama/.zshrc'
 # End of lines added by compinstall
 
 #export TERMINAL=kitty
-export BAT_THEME="Solarized (dark)"
+export BAT_THEME="Catppuccin Mocha"
 #export PATH=$PATH:~/.local/bin:~/.cargo/bin
 export PATH=$PATH:~/.local/bin
 export PATH=~/.npm-global/bin:$PATH
@@ -57,7 +57,7 @@ eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 
 # fnm
-#FNM_PATH="/home/arkreddy/.local/share/fnm"
+#FNM_PATH="/home/arama/.local/share/fnm"
 #if [ -d "$FNM_PATH" ]; then
 #  export PATH="$FNM_PATH:$PATH"
 #  eval "`fnm env`"

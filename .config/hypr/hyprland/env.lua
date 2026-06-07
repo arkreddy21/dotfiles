@@ -1,5 +1,5 @@
 -- ############ Themes #############
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct") -- kde (or) gnome with qgnomeplatform-qt(5/6)-git installed
+hl.env("QT_QPA_PLATFORMTHEME", "kde") -- kde (or) gnome with qgnomeplatform-qt(5/6)-git installed
 -- hl.env("GTK_THEME", "Adwaita:light")
 hl.env("ICON_THEME", "Papirus")
 -- hl.env("QT_STYLE_OVERRIDE", "kvantum")
@@ -11,7 +11,7 @@ hl.env("ICON_THEME", "Papirus")
 -- ############ Others #############
 -- ############ Wayland #############
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-
+--hl.env("MOZ_ENABLE_WAYLAND", "1")
 -- #############################
 -- ### ENVIRONMENT VARIABLES ###
 -- #############################
@@ -20,9 +20,10 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 
 -- Try Hyprcursor
 -- https://sakshatshinde.github.io/hyprcursor-themes/
---hl.env("XCURSOR_THEME", "Vimix-cursors")
+hl.env("XCURSOR_THEME", "breeze_cursors")
 hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+-- hl.env("HYPRCURSOR_THEME", "Nordzy-hyprcursors-lefthand")
+-- hl.env("HYPRCURSOR_SIZE", "24")
 
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
@@ -36,5 +37,5 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
 -- hl.env("XDG_SESSION_DESKTOP", "KDE")
 -- hl.env("XDG_CURRENT_DESKTOP", "KDE")
--- hl.env("GDK_BACKEND", "wayland,x11,*")
+hl.env("GDK_BACKEND", "wayland,x11,*")
 -- hl.env("QT_QPA_PLATFORM", "wayland;xcb")

@@ -2,27 +2,30 @@ require("hyprland.env")
 require("hyprland.execs")
 require("hyprland.rules")
 require("hyprland.keybinds")
+require("monitors")
 
--- local primary = "rgb(cba6f7)"   --mocha mauve
--- local surface = "rgb(1e1e2e)"   -- mocha base
--- local secondary = "rgb(89dceb)" -- mocha sky
--- local error = "rgb(f38ba8)"     --mocha red
-
-local primary = "rgb(8fbcbb)"   -- nord 7
-local surface = "rgb(eceff4)"   -- nord 6
+local primary = "rgb(cba6f7)"   --mocha mauve
+local surface = "rgb(1e1e2e)"   -- mocha base
+local surfacea = "rgba(1e1e2e42)"   -- mocha base with alpha (translucent)
 local secondary = "rgb(89dceb)" -- mocha sky
-local error = "rgb(bf616a)"     --nord red
+local error = "rgb(f38ba8)"     --mocha red
+local text = "rgb(cdd6f4)"
+
+-- local primary = "rgb(8fbcbb)"   -- nord 7
+-- local surface = "rgb(eceff4)"   -- nord 6
+-- local secondary = "rgb(89dceb)" -- mocha sky
+-- local error = "rgb(bf616a)"     --nord red
 
 ----------------
 --- Monitors ---
 --- https://wiki.hypr.land/Configuring/Basics/Monitors
-hl.monitor({
-    output = "",
-    mode = "preferred", -- preferred, highres, highrr
-    position = "auto",  -- auto, auto-right/left/up/down, auto-center-right/left/up/down
-    scale = 1,
-    --vrr = 1,
-})
+-- hl.monitor({
+--     output = "",
+--     mode = "preferred", -- preferred, highres, highrr
+--     position = "auto",  -- auto, auto-right/left/up/down, auto-center-right/left/up/down
+--     scale = 1,
+--     --vrr = 1,
+-- })
 -- hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1, mirror = "DP-1" })
 
 -------------------
@@ -98,7 +101,8 @@ hl.config({
             font_family = Hack,
             font_weight_active = bold,
             font_weight_inactive = bold,
-            text_color = "rgb(ffffff)",
+            text_color = "rgb(1e1e2e)",
+            text_color_inactive = text,
             text_padding = 16,
             indicator_height = 22, -- Make the indicator tall enough to render text inside
             text_offset = -11,     -- about half the indicator height
@@ -110,7 +114,7 @@ hl.config({
         disable_hyprland_logo = true,      -- If true disables the random hyprland logo / anime girl background. :(
         force_default_wallpaper = 0,       -- Set to 0 or 1 to disable the anime mascot wallpapers
         --font_family = "Noto Sans",
-        vrr = 1,
+        vrr = 0,
         mouse_move_enables_dpms = true,    --switch to false to prevent accidental wake up
         key_press_enables_dpms = true,
 
@@ -156,7 +160,12 @@ hl.device({
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 3, direction = "vertical", action = "special", workspace_name = "magic" })
-hl.gesture({ fingers = 4, direction = "vertical", action = "fullscreen" })
+-- hl.gesture({ fingers = 4, direction = "vertical", action = "fullscreen" })
+hl.plugin.hyprexpo.gesture({
+    fingers = 4,
+    direction = "vertical",
+    action = "expo",
+})
 
 -- curves
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
@@ -202,16 +211,27 @@ hl.workspace_rule({ workspace = "10", monitor = "eDP-1" })
 -- hl.workspace_rule({ workspace = "20", monitor = "HDMI-A-1" })
 
 -- Plugin: Overview
--- hl.config({
---     plugin = {
---         hyprexpo = {
---             columns = 3,
---             gap_size = 12,
---             bg_col = "rgb(000000)",
---             workspace_method = "first 1", -- [center/first] [workspace] e.g. first 1 or center m+1
---         },
---     },
--- })
+hl.config({
+    plugin = {
+        hyprexpo = {
+            columns = 3,
+            gaps_in = 12,
+            gaps_out = 12,
+            bg_col = surface,
+            tile_rounding = 4,
+            -- workspace_method = "first 1", -- [center/first] [workspace] e.g. first 1 or center m+1
+            border_color_focus = primary,
+            border_color_hover = secondary,
+            label_text_mode = "id",
+            label_bg_shape = "rounded",
+            label_color_default = text,
+            label_color_focus = primary,
+            label_color_hover = secondary,
+            drag_drop_proxy_color = surfacea,
+            drag_drop_proxy_active_color = surfacea
+        },
+    },
+})
 
 -- Required for permission rules to apply (disabled by default)
 -- hl.config({

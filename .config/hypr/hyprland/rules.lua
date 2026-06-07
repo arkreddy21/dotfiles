@@ -40,9 +40,19 @@ hl.window_rule({
   dim_around = true,
 })
 
+-- hyprmoncfg
+hl.window_rule({
+  match = { class = "hyprmoncfg" },
+  float = true,
+  center = true,
+  size = { "monitor_w*0.8", "monitor_h*0.8" },
+  dim_around = true,
+})
+
 -- Clipse - different w/h ratio
 hl.window_rule({
-  match = { class = "clipse" },
+    -- match = { class = "clipse" },
+  match = { title = "Emoji Selector" },
   float = true,
   center = true,
   size = { "monitor_w*0.35", "monitor_h*0.60" },

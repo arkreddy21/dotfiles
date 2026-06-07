@@ -1,0 +1,7 @@
+installed as extras (non hypr*)
+xdg-desktop-portal-hyprland
+playerctl
+brightnessctl
+wf-recorder
+hyprmoncfg
+voxtype-bin wtype

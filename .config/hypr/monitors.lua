@@ -11,11 +11,7 @@ hl.monitor({
 
 hl.monitor({
   output = "desc:Sharp Corporation 0x15C3",
-  mode = "1920x1200@120.00",
-  position = "0x0",
-  scale = 1,
-  sdr_min_luminance = 0.2,
-  sdr_max_luminance = 80,
+  disabled = true,
 })
 
 hl.workspace_rule({ workspace = "1", monitor = "desc:Sharp Corporation 0x15C3" })

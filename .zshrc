@@ -23,7 +23,7 @@ export PATH=~/.npm-global/bin:$PATH
 
 export UV_PYTHON_PREFERENCE=system
 export MANPAGER='nvim +Man!'
-
+export EDITOR='nvim'
 
 ######## Aliases ########
 # alias ls='ls --color'
@@ -104,8 +104,8 @@ zinit cdreplay -q
 # bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey "\e[1;5C" forward-word
-bindkey "\e[1;5D" backward-word
+#bindkey "\e[1;5C" forward-word
+#bindkey "\e[1;5D" backward-word
 
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'

@@ -98,9 +98,9 @@ hl.config({
             rounding = 4,
             round_only_edges = false,
             font_size = 13,
-            font_family = Hack,
-            font_weight_active = bold,
-            font_weight_inactive = bold,
+            font_family = "IBM Plex Sans",
+            font_weight_active = "bold",
+            font_weight_inactive = "bold",
             text_color = "rgb(1e1e2e)",
             text_color_inactive = text,
             text_padding = 16,
@@ -114,20 +114,24 @@ hl.config({
         disable_hyprland_logo = true,      -- If true disables the random hyprland logo / anime girl background. :(
         force_default_wallpaper = 0,       -- Set to 0 or 1 to disable the anime mascot wallpapers
         --font_family = "Noto Sans",
-        vrr = 0,
+        vrr = 3,  -- 3: fullscreen with video or games only
         mouse_move_enables_dpms = true,    --switch to false to prevent accidental wake up
         key_press_enables_dpms = true,
 
         animate_manual_resizes = false,
         animate_mouse_windowdragging = false,
         enable_swallow = false,
-        swallow_regex = "(foot|kitty|allacritty|Alacritty)",
+        swallow_regex = "(foot|kitty|Alacritty)",
 
         on_focus_under_fullscreen = 2,
         allow_session_lock_restore = true,
 
         -- initial_workspace_tracking = 1
         focus_on_activate = true,
+    },
+    debug = {
+        -- overlay = true,
+        -- vfr = true
     }
 })
 
@@ -211,6 +215,7 @@ hl.workspace_rule({ workspace = "10", monitor = "eDP-1" })
 -- hl.workspace_rule({ workspace = "20", monitor = "HDMI-A-1" })
 
 -- Plugin: Overview
+-- https://github.com/sandwichfarm/hyprexpo
 hl.config({
     plugin = {
         hyprexpo = {
@@ -218,7 +223,7 @@ hl.config({
             gaps_in = 12,
             gaps_out = 12,
             bg_col = surface,
-            tile_rounding = 4,
+            tile_rounding = 8,
             -- workspace_method = "first 1", -- [center/first] [workspace] e.g. first 1 or center m+1
             border_color_focus = primary,
             border_color_hover = secondary,

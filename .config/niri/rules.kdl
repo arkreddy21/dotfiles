@@ -1,0 +1,90 @@
+// ###############################################################################
+// ##! Window Rules
+
+// ---- Dialog windows
+// window-rule {
+//     match title="^(Open File|Pick File|Select a File|Save a File|Save File|Choose wallpaper|Open Folder|Save As|Library|File Upload|wants to save|wants to open|Save Image|Choose a|Select file|Select what to share|Enter name of file|All Files|Open Document)(.*)$"
+//     open-floating true
+//     default-column-width { proportion 0.50; }
+//     default-window-height { proportion 0.70; }
+// }
+
+// ---- TUIs
+window-rule {
+    match app-id="^(wiremix|wlctl|bluetui|org.pulseaudio.pavucontrol|nm-connection-editor|pavucontrol|org.gnome.Characters|org.kde.plasma.emojier)$"
+    open-floating true
+    default-column-width { proportion 0.45; }
+    default-window-height { proportion 0.55; }
+}
+
+// ---- hyprmoncfg
+window-rule {
+    match app-id="hyprmoncfg"
+    open-floating true
+    default-column-width { proportion 0.80; }
+    default-window-height { proportion 0.80; }
+}
+
+// ---- Clipse Clipboard Manager
+window-rule {
+    match app-id="clipse"
+    open-floating true
+    default-column-width { proportion 0.35; }
+    default-window-height { proportion 0.60; }
+}
+
+// ---- General Floating Windows
+window-rule { match app-id="org.gnome.NautilusPreviewer"; open-floating true; }
+window-rule { match app-id="kcm_.*"; open-floating true; }
+window-rule { match app-id=".*bluedevilwizard"; open-floating true; }
+window-rule { match title=".*Welcome"; open-floating true; }
+
+window-rule {
+    match app-id="org.freedesktop.impl.portal.desktop.kde"
+    open-floating true
+    default-column-width { proportion 0.60; }
+    default-window-height { proportion 0.65; }
+}
+window-rule {
+    match app-id="^(nm-connection-editor)$"
+    open-floating true
+    default-column-width { proportion 0.45; }
+    default-window-height { proportion 0.45; }
+}
+window-rule {
+    match app-id="^(pavucontrol)$"
+    open-floating true
+    default-column-width { proportion 0.45; }
+    default-window-height { proportion 0.45; }
+}
+
+// ---- Strict Tiling Enforcement (Prevents auto-floating overrides)
+window-rule { match app-id="^dev\\.warp\\.Warp$"; open-floating false; }
+window-rule { match title="LTspice"; open-floating false; }
+
+// ---- Picture-in-Picture (PiP) Rules
+window-rule {
+    match title="^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$"
+    open-floating true
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 0.25; }
+    // Positions floating window near top-right corner with offset padding
+    default-floating-position x=32 y=32 relative-to="top-right"
+}
+
+// ---- Prevent focus snatching (e.g., kitty background activities)
+window-rule {
+    match app-id="kitty"
+    open-focused false
+}
+
+// ---- Screenshot Utility Behavior
+window-rule {
+    match app-id="flameshot"
+    open-floating true
+}
+
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
+}

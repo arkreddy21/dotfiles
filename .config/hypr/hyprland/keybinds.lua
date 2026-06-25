@@ -5,32 +5,32 @@ local mainMod = "SUPER"
 local ipc = "noctalia msg"
 -- Set programs that you use
 local terminal = "kitty"
--- local fileManager = "nautilus /home/arkreddy/Documents/Books/Masters"
+-- local fileManager = "nautilus /home/arama/Documents/Books/Masters"
 local fileManager = "dolphin"
 local browser = "zen-browser"
 local taskmanager = "kitty -e btop"
 -- local menu = "rofi -show drun"
 local menu = ipc .. " panel-toggle launcher"
 
-
 -- ###############################################################################
 -- ##! Actions
 
 -- hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
-hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd(ipc .. " bar-toggle"))
 --hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd("wlogout -p layer-shell"))
+hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd(ipc .. " bar-toggle"))
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(ipc .. " panel-open session"))
+-- hl.bind("ALT + Tab", hl.dsp.exec_cmd("noctalia msg window-switcher"))
 
 hl.bind(mainMod .. " + X", hl.dsp.window.close())
 hl.bind(mainMod .. " + ALT + M", hl.dsp.exit())
 
-hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("voxtype record start"))                -- copilot key
+hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("voxtype record start"))                    -- copilot key
 hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("voxtype record stop"), { release = true }) -- copilot key
-hl.bind("SUPER + P", hl.dsp.exec_cmd([[kitty --class hyprmoncfg -e 'hyprmoncfg']]))         -- also display fn key
+hl.bind("SUPER + P", hl.dsp.exec_cmd([[kitty --class hyprmoncfg -e 'hyprmoncfg']]))             -- also display fn key (f9)
 
 
 hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind("SUPER + ALT + SHIFT + L", hl.dsp.exec_cmd("systemctl suspend"))
+hl.bind("SUPER + ALT + SHIFT + L", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
 -- hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd(ipc .. " session lock"))
 -- hl.bind("SUPER + ALT + SHIFT + L", hl.dsp.exec_cmd(ipc .. " session lock-and-suspend"))
 
@@ -39,28 +39,28 @@ hl.bind(mainMod .. " + G", hl.dsp.group.next())
 hl.bind(mainMod .. " + ALT + G", hl.dsp.group.prev())
 
 -- Screenshot edit
-hl.bind("SUPER + SHIFT + ALT + S", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | swappy -f -]]))                                                              -- Screen snip >> edit
+hl.bind("SUPER + SHIFT + ALT + S", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | swappy -f -]])) -- Screen snip >> edit
 -- OCR
 hl.bind("CTRL + SHIFT + Print",
     hl.dsp.exec_cmd(
-    [[grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract -l eng "tmp.png" - | wl-copy && rm "tmp.png"]]))                                             -- Screen snip to text >> clipboard
+        [[grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract -l eng "tmp.png" - | wl-copy && rm "tmp.png"]])) -- Screen snip to text >> clipboard
 -- Color picker
-hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))                                                                                           -- Pick color (Hex) >> clipboard
+hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))                                               -- Pick color (Hex) >> clipboard
 -- Recording stuff
 hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh --fullscreen-sound"),
-    { description = "Record screen (with sound)" })                                                                                                      -- Record screen (with sound)
+    { description = "Record screen (with sound)" })                                            -- Record screen (with sound)
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh --fullscreen"),
-    { description = "Record screen (no sound)" })                                                                                                        -- Record screen (no sound)
+    { description = "Record screen (no sound)" })                                              -- Record screen (no sound)
 hl.bind(mainMod .. " + SHIFT + CTRL + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/record.sh"),
-    { description = "Record region (no sound)" })                                                                                                        -- Record region (no sound)
+    { description = "Record region (no sound)" })                                              -- Record region (no sound)
 -- Screenshots
-hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region"))                                                                                                  -- Screenshot a region
--- hl.bind("Print", hl.dsp.exec_cmd("flameshot gui")) -- Screenshot a region
-hl.bind("CTRL + Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))                                                                          -- Screenshot a region to clipboard only
-hl.bind("SUPER + Print", hl.dsp.exec_cmd("hyprshot -m window"))                                                                                          -- Screenshot a window
-hl.bind("SUPER + CTRL + Print", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))                                                                  -- Screenshot a window to clipboard only
-hl.bind("ALT + Print", hl.dsp.exec_cmd("hyprshot -m output -m eDP-1"))                                                                                   -- Screenshot entire screen
-hl.bind("ALT + CTRL + Print", hl.dsp.exec_cmd("hyprshot -m output -m eDP-1 --clipboard-only"))                                                           -- Screenshot entire screen to clipboard only
+-- hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region"))                                        -- Screenshot a region
+hl.bind("Print", hl.dsp.exec_cmd("flameshot gui")) -- Screenshot a region
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))                -- Screenshot a region to clipboard only
+hl.bind("SUPER + Print", hl.dsp.exec_cmd("hyprshot -m window"))                                -- Screenshot a window
+hl.bind("SUPER + CTRL + Print", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))        -- Screenshot a window to clipboard only
+hl.bind("ALT + Print", hl.dsp.exec_cmd("hyprshot -m output -m eDP-1"))                         -- Screenshot entire screen
+hl.bind("ALT + CTRL + Print", hl.dsp.exec_cmd("hyprshot -m output -m eDP-1 --clipboard-only")) -- Screenshot entire screen to clipboard only
 
 
 -- ##################################################################################
@@ -72,6 +72,10 @@ hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.window.swap({ direction = "l" }))
 hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.swap({ direction = "r" }))
 hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.window.swap({ direction = "u" }))
 hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.window.swap({ direction = "d" }))
+hl.bind(mainMod .. " + SHIFT + h", hl.dsp.window.swap({ direction = "l" }))
+hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.swap({ direction = "r" }))
+hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.swap({ direction = "u" }))
+hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.swap({ direction = "d" }))
 
 --/# bind = Super, ←/↑/→/↓,, # Focus in direction
 hl.bind(mainMod .. " + Left", hl.dsp.focus({ direction = "l" }))
@@ -82,13 +86,6 @@ hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "r" }))
 hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "d" }))
-
--- Window split ratio
--- hl.bind("SUPER + Semicolon", hl.dsp.layout("splitratio -0.1"), { repeating = true }) -- Dwindle
--- hl.bind("SUPER + Apostrophe", hl.dsp.layout("splitratio +0.1"), { repeating = true })
--- hl.bind("SUPER + Semicolon", hl.dsp.layout("mfact -0.1"), { repeating = true }) -- For Master layout
--- hl.bind("SUPER + Apostrophe", hl.dsp.layout("mfact +0.1"), { repeating = true })
--- gives runtime errors
 
 -- Layout-safe split resize
 local function resize_split(delta)
@@ -109,13 +106,16 @@ hl.bind(mainMod .. " + Apostrophe", function() resize_split("+0.1") end, { repea
 
 -- Layout-safe toggle split / swap with master
 local function toggle_split()
-    local layout = hl.get_active_workspace().tiled_layout
+    local win = hl.get_active_window()
+    if not win then return end
+    local layout = win.workspace.tiled_layout
     if layout == "master" then
         hl.dispatch(hl.dsp.layout("swapwithmaster"))
     elseif layout == "dwindle" then
         hl.dispatch(hl.dsp.layout("togglesplit"))
+    elseif layout == "scrolling" then
+        hl.dispatch(hl.dsp.layout("consume_or_expel prev"))
     end
-    -- other layouts: do nothing
 end
 hl.bind(mainMod .. " + B", function() toggle_split() end)
 
@@ -124,11 +124,10 @@ hl.bind(mainMod .. " + B", function() toggle_split() end)
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + D", hl.dsp.window.fullscreen({ mode = "maximized" })) -- maximize
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.window.float())
-hl.bind(mainMod .. " + P", hl.dsp.window.pin())                              -- Pin
+hl.bind(mainMod .. " + ALT+ P", hl.dsp.window.pin())                         -- Pin
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
--- hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-hl.bind("SUPER + CTRL + mouse:272", hl.dsp.window.resize(), { mouse = true })
+hl.bind("SUPER + ALT + mouse:272", hl.dsp.window.resize(), { mouse = true })
 
 --!
 -- ##! Workspace management
@@ -136,6 +135,10 @@ hl.bind("SUPER + CTRL + mouse:272", hl.dsp.window.resize(), { mouse = true })
 -- special workspace
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic", follow = true }))
+
+hl.bind(mainMod .. " + W", hl.dsp.workspace.toggle_special("work"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.window.move({ workspace = "special:work", follow = true }))
+
 
 -- Switch workspaces with mainMod + [0-9]
 hl.bind(mainMod .. " + 1", hl.dsp.focus({ workspace = "1" }))
@@ -227,18 +230,20 @@ hl.bind(mainMod .. " + ALT + Page_Up", hl.dsp.window.move({ workspace = "r-1", f
 -- ##################################################################################
 -- #!
 -- ##! Apps
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))                                                 -- Launch App Menu
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu)) -- Launch App Menu
 
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd([[XDG_CURRENT_DESKTOP="gnome" gnome-control-center]])) -- Launch GNOME Settings
-hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd(taskmanager))                                    -- Launch task manager
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))                                          -- Launch File Manager
-hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("/opt/zen-browser-bin/zen-bin"))                       -- Launch Zen Browser
+-- hl.bind(mainMod .. " + I", hl.dsp.exec_cmd([[XDG_CURRENT_DESKTOP="gnome" gnome-control-center]])) -- Launch Settings
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("systemsettings"))               -- Launch KDE Settings
+hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd(taskmanager))              -- Launch task manager
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))                    -- Launch File Manager
+hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("/opt/zen-browser-bin/zen-bin")) -- Launch Zen Browser
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("obsidian"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Equal", hl.dsp.exec_cmd("speedcrunch"))
-hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd("zeditor"))  -- Text editor
+hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd("zeditor")) -- Text editor
 
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t")) -- Notification panel
+-- hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t")) -- Notification panel
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center notifications")) -- Notification panel
 
 hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd(ipc .. " bar toggle"))
 hl.bind(mainMod .. " + grave", function() hl.plugin.hyprexpo.expo("toggle") end)
@@ -285,11 +290,11 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. " brightness-down"))
 
 -- ########################
 -- ### NEW ################
-hl.bind("SUPER + w", hl.dsp.exec_cmd(browser, { workspace = "1 silent" }))
-hl.bind("SUPER + w", hl.dsp.exec_cmd(fileManager, { workspace = "2 silent" }))
-hl.bind("SUPER + w", hl.dsp.exec_cmd("zeditor", { workspace = "3 silent" }))
-hl.bind("SUPER + w", hl.dsp.exec_cmd(terminal, { workspace = "9 silent" }))
-hl.bind("SUPER + w", hl.dsp.exec_cmd("obsidian", { workspace = "10 silent" }))
+-- hl.bind("SUPER + w", hl.dsp.exec_cmd(browser, { workspace = "1 silent" }))
+-- hl.bind("SUPER + w", hl.dsp.exec_cmd(fileManager, { workspace = "2 silent" }))
+-- hl.bind("SUPER + w", hl.dsp.exec_cmd("zeditor", { workspace = "3 silent" }))
+-- hl.bind("SUPER + w", hl.dsp.exec_cmd(terminal, { workspace = "9 silent" }))
+-- hl.bind("SUPER + w", hl.dsp.exec_cmd("obsidian", { workspace = "10 silent" }))
 -- hl.bind("SUPER + c", hl.dsp.dpms({ action = "toggle", monitor = "eDP-1" }), { locked = true })
 
 

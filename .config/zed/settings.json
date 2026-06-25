@@ -7,6 +7,11 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vim": {
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true
+  },
+  "vim_mode": false,
   "terminal": {
     "dock": "bottom"
   },
@@ -144,7 +149,7 @@
   "buffer_font_family": "Hack Nerd Font",
   "buffer_font_size": 18,
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha",
   },

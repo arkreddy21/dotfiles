@@ -22,21 +22,45 @@ if pgrep wf-recorder > /dev/null; then
     pkill wf-recorder &
 else
     if [[ "$1" == "--fullscreen-sound" ]]; then
-        notify-send "Starting recording" 'recording_'"$(getdate)"'.mp4' -a 'Recorder' & disown
-        wf-recorder -o "$(getactivemonitor)" --pixel-format yuv420p -f './recording_'"$(getdate)"'.mp4' -t --audio="$(getaudiooutput)"
+        notify-send "Starting recording" 'recording_'"$(getdate)"'.mkv' -a 'Recorder' & disown
+        wf-recorder -o "$(getactivemonitor)" \
+            -c hevc_vaapi \
+            -F "scale_vaapi=out_range=full:format=nv12" \
+            -p qp=20 \
+            -p profile=main \
+            -f './recording_'"$(getdate)"'.mkv' \
+            --audio="$(getaudiooutput)"
     elif [[ "$1" == "--fullscreen" ]]; then
-        notify-send "Starting recording" 'recording_'"$(getdate)"'.mp4' -a 'Recorder' & disown
-        wf-recorder -o "$(getactivemonitor)" --pixel-format yuv420p -f './recording_'"$(getdate)"'.mp4' -t
+        notify-send "Starting recording" 'recording_'"$(getdate)"'.mkv' -a 'Recorder' & disown
+        wf-recorder -o "$(getactivemonitor)" \
+            -c hevc_vaapi \
+            -F "scale_vaapi=out_range=full:format=nv12" \
+            -p qp=20 \
+            -p profile=main \
+            -f './recording_'"$(getdate)"'.mkv'
     else
         if ! region="$(slurp 2>&1)"; then
             notify-send "Recording cancelled" "Selection was cancelled" -a 'Recorder' & disown
             exit 1
         fi
-        notify-send "Starting recording" 'recording_'"$(getdate)"'.mp4' -a 'Recorder' & disown
+        notify-send "Starting recording" 'recording_'"$(getdate)"'.mkv' -a 'Recorder' & disown
         if [[ "$1" == "--sound" ]]; then
-            wf-recorder --pixel-format yuv420p -f './recording_'"$(getdate)"'.mp4' -t --geometry "$region" --audio="$(getaudiooutput)"
+            wf-recorder \
+                -c hevc_vaapi \
+                -F "scale_vaapi=out_range=full:format=nv12" \
+                -p qp=20 \
+                -p profile=main \
+                -f './recording_'"$(getdate)"'.mkv' \
+                --geometry "$region" \
+                --audio="$(getaudiooutput)"
         else
-            wf-recorder --pixel-format yuv420p -f './recording_'"$(getdate)"'.mp4' -t --geometry "$region"
+            wf-recorder \
+                -c hevc_vaapi \
+                -F "scale_vaapi=out_range=full:format=nv12" \
+                -p qp=20 \
+                -p profile=main \
+                -f './recording_'"$(getdate)"'.mkv' \
+                --geometry "$region"
         fi
     fi
 fi

@@ -2,14 +2,16 @@ require("hyprland.env")
 require("hyprland.execs")
 require("hyprland.rules")
 require("hyprland.keybinds")
-require("monitors")
+pcall(require, "monitors")  -- protected call
 
-local primary = "rgb(cba6f7)"   --mocha mauve
-local surface = "rgb(1e1e2e)"   -- mocha base
-local surfacea = "rgba(1e1e2e42)"   -- mocha base with alpha (translucent)
-local secondary = "rgb(89dceb)" -- mocha sky
-local error = "rgb(f38ba8)"     --mocha red
+
+local primary = "rgb(cba6f7)"     --mocha mauve
+local surface = "rgb(1e1e2e)"     -- mocha base
+local surfacea = "rgba(1e1e2e42)" -- mocha base with alpha (translucent)
+local secondary = "rgb(89dceb)"   -- mocha sky
+local error = "rgb(f38ba8)"       --mocha red
 local text = "rgb(cdd6f4)"
+local transparent = "rgba(00000000)"
 
 -- local primary = "rgb(8fbcbb)"   -- nord 7
 -- local surface = "rgb(eceff4)"   -- nord 6
@@ -24,7 +26,6 @@ local text = "rgb(cdd6f4)"
 --     mode = "preferred", -- preferred, highres, highrr
 --     position = "auto",  -- auto, auto-right/left/up/down, auto-center-right/left/up/down
 --     scale = 1,
---     --vrr = 1,
 -- })
 -- hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1, mirror = "DP-1" })
 
@@ -34,8 +35,8 @@ local text = "rgb(cdd6f4)"
 hl.config({
     general = {
         layout = "dwindle",
-        gaps_in = 2,
-        gaps_out = 4.,
+        gaps_in = 1,
+        gaps_out = 4,
         border_size = 2,
         gaps_workspaces = 50,
         resize_on_border = true,
@@ -44,7 +45,7 @@ hl.config({
         -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing
         col = {
             active_border = primary,
-            inactive_border = surface,
+            inactive_border = transparent,
         },
         snap = {
             enabled = true
@@ -58,18 +59,23 @@ hl.config({
         dim_strength = 0.07,
         dim_special = 0.5,
         blur = {
-            enabled = true,
-            size = 14,
-            passes = 4,
-            brightness = 1,
-            noise = 0.01,
-            contrast = 1,
+            enabled = false,
+            size = 3,
+            passes = 2,
             popups = true,
             popups_ignorealpha = 0.6,
+        },
+        shadow = {
+            enabled = false,
+        },
+        glow = {
+            enabled = false
         }
     },
     input = {
-        kb_options = "caps:swapescape",
+        kb_layout = "us",
+        kb_variant = "altgr-intl",   -- other layout+variants: us + altgr-intl,  eu
+        kb_options = "caps:swapescape,rupeesign:4",
         follow_mouse = 1,
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
         touchpad = {
@@ -79,9 +85,8 @@ hl.config({
         }
     },
     binds = {
-        -- scroll_event_delay = 0,
+        hide_special_on_workspace_change = true
     },
-    -- gestures = {},
     group = {
         col = {
             border_active = primary,
@@ -111,11 +116,11 @@ hl.config({
         }
     },
     misc = {
-        disable_hyprland_logo = true,      -- If true disables the random hyprland logo / anime girl background. :(
-        force_default_wallpaper = 0,       -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo = true,   -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         --font_family = "Noto Sans",
-        vrr = 3,  -- 3: fullscreen with video or games only
-        mouse_move_enables_dpms = true,    --switch to false to prevent accidental wake up
+        vrr = 3,                        -- 3: fullscreen with video or games only
+        mouse_move_enables_dpms = true, --switch to false to prevent accidental wake up
         key_press_enables_dpms = true,
 
         animate_manual_resizes = false,
@@ -156,20 +161,22 @@ hl.config({
 })
 hl.workspace_rule({ workspace = "1", layout = "master" })
 hl.workspace_rule({ workspace = "special:magic", layout = "scrolling" })
+hl.workspace_rule({ workspace = "special:work", layout = "scrolling" })
 
 hl.device({
     name = "bluetooth-mouse-m336/m337/m535-mouse",
     sensitivity = -0.3
 })
 
-hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 3, direction = "vertical", action = "special", workspace_name = "magic" })
--- hl.gesture({ fingers = 4, direction = "vertical", action = "fullscreen" })
-hl.plugin.hyprexpo.gesture({
-    fingers = 4,
-    direction = "vertical",
-    action = "expo",
+hl.device({
+    name = "logitech-optical-usb-mouse",
+    sensitivity = 1
 })
+
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 3, direction = "vertical", action = "special", workspace_name = "magic" })
+hl.gesture({ fingers = 3, direction = "pinch", action = "cursorZoom", mode = "live" })
 
 -- curves
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
@@ -191,28 +198,16 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 0.5, bezier = "me
 
 
 -- monitor assignment rules
-hl.workspace_rule({ workspace = "1", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "3", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "4", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "5", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "6", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "7", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "8", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "9", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "10", monitor = "eDP-1" })
-
--- Depends on connected port
--- hl.workspace_rule({ workspace = "11", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "12", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "13", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "14", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "15", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "16", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "17", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "18", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "19", monitor = "HDMI-A-1" })
--- hl.workspace_rule({ workspace = "20", monitor = "HDMI-A-1" })
+-- hl.workspace_rule({ workspace = "1", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "3", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "4", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "5", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "6", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "7", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "8", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "9", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "10", monitor = "eDP-1" })
 
 -- Plugin: Overview
 -- https://github.com/sandwichfarm/hyprexpo
@@ -223,7 +218,7 @@ hl.config({
             gaps_in = 12,
             gaps_out = 12,
             bg_col = surface,
-            tile_rounding = 8,
+            tile_rounding = 6,
             -- workspace_method = "first 1", -- [center/first] [workspace] e.g. first 1 or center m+1
             border_color_focus = primary,
             border_color_hover = secondary,
@@ -235,7 +230,16 @@ hl.config({
             drag_drop_proxy_color = surfacea,
             drag_drop_proxy_active_color = surfacea
         },
+        -- dynamic_cursors = {
+        --     mode = 'stretch'
+        -- }
     },
+})
+
+hl.plugin.hyprexpo.gesture({
+    fingers = 4,
+    direction = "vertical",
+    action = "expo",
 })
 
 -- Required for permission rules to apply (disabled by default)

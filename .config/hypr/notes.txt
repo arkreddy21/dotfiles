@@ -2,6 +2,7 @@ installed as extras (non hypr*)
 xdg-desktop-portal-hyprland
 playerctl
 brightnessctl
-wf-recorder
+wf-recorder or gpu-screen-recorder
 hyprmoncfg
 voxtype-bin wtype
+flameshot

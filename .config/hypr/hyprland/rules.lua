@@ -1,5 +1,9 @@
--- Window rules
--- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
+----------------- Workspace Rules -----------------
+hl.workspace_rule({ workspace = "1", layout = "master" })
+hl.workspace_rule({ workspace = "special:magic", layout = "scrolling" })
+hl.workspace_rule({ workspace = "special:work", layout = "scrolling" })
+
+----------------- Window Rules -----------------
 
 -- hl.window_rule({ match = { class = ".*" }, no_blur = true })
 
@@ -11,14 +15,7 @@ hl.window_rule({
 
 hl.window_rule({
     name = "fix-xwayland-drags",
-    match = {
-        class = "^$",
-        title = "^$",
-        xwayland = true,
-        float = true,
-        fullscreen = false,
-        pin = false,
-    },
+    match = { class = "^$", title = "^$", xwayland = true, float = true, fullscreen = false, pin = false},
     no_focus = true,
 })
 
@@ -109,14 +106,23 @@ hl.window_rule({
 hl.window_rule({ match = { title = ".*\\.exe" }, immediate = true })
 hl.window_rule({ match = { class = "^(steam_app).*" }, immediate = true })
 
--- Layer rules
+hl.window_rule({ match = {class = "flameshot"}, no_anim = true, float = true, center = true})
+
+-- prevent kitty from focusing because of ssh pings. or should I add suppress_event = 'activatefocus'
+hl.window_rule({ match = { class = 'kitty' }, focus_on_activate = false })
+
+-- hl.window_rule({
+--     match = { class = "kitty" },
+--     opacity = "0.96 0.96", -- Active and inactive opacity multipliers
+--     no_blur = false
+-- })
+-- 
+
+----------------- Layer Rules -----------------
 hl.layer_rule({ match = { namespace = "rofi" }, dim_around = true })
 hl.layer_rule({ match = { namespace = "logout_dialog" }, blur = true })
 hl.layer_rule({ match = { namespace = "selection" }, no_anim = true })
 hl.layer_rule({ match = { namespace = "hyprpicker" }, no_anim = true })
-
--- Workspace rules
--- hl.workspace_rule({ workspace = "special:magic", gaps_out = 24 })
 
 -- hl.layer_rule({
 --     name = "noctalia",
@@ -128,13 +134,3 @@ hl.layer_rule({ match = { namespace = "hyprpicker" }, no_anim = true })
 --     blur_popups = true,
 -- })
 
--- hl.window_rule({
---     match = { class = "kitty" },
---     opacity = "0.96 0.96", -- Active and inactive opacity multipliers
---     no_blur = false
--- })
-
--- prevent kitty from focusing because of ssh pings. or should I add suppress_event = 'activatefocus'
-hl.window_rule({ match = { class = 'kitty' }, focus_on_activate = false })
-
-hl.window_rule({ match = {class = "flameshot"}, no_anim = true, float = true, center = true})

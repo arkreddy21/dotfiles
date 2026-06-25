@@ -16,10 +16,6 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 -- ### ENVIRONMENT VARIABLES ###
 -- #############################
 
--- See https://wiki.hyprland.org/Configuring/Environment-variables/
-
--- Try Hyprcursor
--- https://sakshatshinde.github.io/hyprcursor-themes/
 -- hl.env("XCURSOR_THEME", "breeze_cursors")
 -- hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
@@ -35,7 +31,4 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
--- hl.env("XDG_SESSION_DESKTOP", "KDE")
--- hl.env("XDG_CURRENT_DESKTOP", "KDE")
 hl.env("GDK_BACKEND", "wayland,x11,*")
--- hl.env("QT_QPA_PLATFORM", "wayland;xcb")

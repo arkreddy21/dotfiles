@@ -31,7 +31,6 @@ local transparent = "rgba(00000000)"
 
 -------------------
 -- Look And Feel --
--- https://wiki.hypr.land/Configuring/Basics/Variables/#general
 hl.config({
     general = {
         layout = "dwindle",
@@ -49,7 +48,8 @@ hl.config({
         },
         snap = {
             enabled = true
-        }
+        },
+        allow_tearing = false,
     },
     decoration = {
         rounding = 12,
@@ -71,21 +71,6 @@ hl.config({
         glow = {
             enabled = false
         }
-    },
-    input = {
-        kb_layout = "us",
-        kb_variant = "altgr-intl",   -- other layout+variants: us + altgr-intl,  eu
-        kb_options = "caps:swapescape,rupeesign:4",
-        follow_mouse = 1,
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-        touchpad = {
-            natural_scroll = true,
-            scroll_factor = 1.0,
-            drag_lock = 0, -- 1: delay, 2: sticky
-        }
-    },
-    binds = {
-        hide_special_on_workspace_change = true
     },
     group = {
         col = {
@@ -114,6 +99,9 @@ hl.config({
             height = 1,
             scrolling = false,
         }
+    },
+    binds = {
+        hide_special_on_workspace_change = true
     },
     misc = {
         disable_hyprland_logo = true,   -- If true disables the random hyprland logo / anime girl background. :(
@@ -159,24 +147,6 @@ hl.config({
         follow_focus = true,
     },
 })
-hl.workspace_rule({ workspace = "1", layout = "master" })
-hl.workspace_rule({ workspace = "special:magic", layout = "scrolling" })
-hl.workspace_rule({ workspace = "special:work", layout = "scrolling" })
-
-hl.device({
-    name = "bluetooth-mouse-m336/m337/m535-mouse",
-    sensitivity = -0.3
-})
-
-hl.device({
-    name = "logitech-optical-usb-mouse",
-    sensitivity = 1
-})
-
-hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 3, direction = "vertical", action = "special", workspace_name = "magic" })
-hl.gesture({ fingers = 3, direction = "pinch", action = "cursorZoom", mode = "live" })
 
 -- curves
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
@@ -196,18 +166,6 @@ hl.animation({ leaf = "fade", enabled = true, speed = 2, bezier = "md3_decel" })
 hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 0.5, bezier = "menu_decel" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 0.5, bezier = "menu_accel" })
 
-
--- monitor assignment rules
--- hl.workspace_rule({ workspace = "1", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "3", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "4", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "5", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "6", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "7", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "8", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "9", monitor = "eDP-1" })
--- hl.workspace_rule({ workspace = "10", monitor = "eDP-1" })
 
 -- Plugin: Overview
 -- https://github.com/sandwichfarm/hyprexpo
@@ -240,6 +198,37 @@ hl.plugin.hyprexpo.gesture({
     fingers = 4,
     direction = "vertical",
     action = "expo",
+})
+
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 3, direction = "vertical", action = "special", workspace_name = "magic" })
+hl.gesture({ fingers = 3, direction = "pinch", action = "cursorZoom", mode = "live" })
+
+----- Inputs and Devices -----
+hl.config({
+    input = {
+        kb_layout = "us",
+        kb_variant = "altgr-intl",   -- other layout+variants: us + altgr-intl,  eu
+        kb_options = "caps:swapescape,rupeesign:4",
+        follow_mouse = 1,
+        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        touchpad = {
+            natural_scroll = true,
+            scroll_factor = 1.0,
+            drag_lock = 0, -- 1: delay, 2: sticky
+        }
+    },
+})
+
+hl.device({
+    name = "bluetooth-mouse-m336/m337/m535-mouse",
+    sensitivity = -0.3
+})
+
+hl.device({
+    name = "logitech-optical-usb-mouse",
+    sensitivity = 1
 })
 
 -- Required for permission rules to apply (disabled by default)

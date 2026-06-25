@@ -4,12 +4,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     -- hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
 
-    -- Polkit Agents (use one)
-    -- handled by noctalia
-    -- hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-    -- hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
-    -- hl.exec_cmd("systemctl --user start hyprpolkitagent")
-
     hl.exec_cmd("noctalia")
     hl.exec_cmd("hyprpm reload")
     -- hl.exec_cmd("hyprpaper")
@@ -22,6 +16,11 @@ hl.on("hyprland.start", function()
     -- hl.exec_cmd("swayosd-server")
     -- hl.exec_cmd("qs -c $qsConfig")
 
+    -- Polkit Agents (use one)
+    -- handled by noctalia
+    -- hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+    -- hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+    -- hl.exec_cmd("systemctl --user start hyprpolkitagent")
 
 
     -- Unnecessary-----------------------------------------------------------

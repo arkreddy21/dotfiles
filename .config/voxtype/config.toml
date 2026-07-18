@@ -1,0 +1,46 @@
+# State file for Waybar/polybar integration (enabled by default)
+state_file = "disabled"  # Or custom path, or "disabled" to turn off
+
+[hotkey]
+key = "SCROLLLOCK"  # Or: PAUSE, F13-F24, RIGHTALT, etc.
+modifiers = []      # Optional: ["LEFTCTRL", "LEFTALT"]
+# mode = "toggle"   # Uncomment for toggle mode (press to start/stop)
+
+[audio]
+device = "default"  # Or specific device from `pactl list sources short`
+sample_rate = 16000
+max_duration_secs = 60
+
+[whisper]
+model = "base.en"   # tiny, base, small, medium, large-v3, large-v3-turbo
+language = "en"     # Or "auto" for detection, or language code (es, fr, de, etc.)
+translate = false   # Translate non-English speech to English
+# threads = 4       # CPU threads for inference (omit for auto-detect)
+# on_demand_loading = true  # Load model only when recording (saves memory)
+
+[output]
+mode = "paste"       # "type", "clipboard", or "paste"
+fallback_to_clipboard = true
+type_delay_ms = 0   # Increase if characters are dropped
+# auto_submit = true  # Send Enter after transcription (for chat apps, terminals)
+# Note: "paste" mode copies to clipboard then simulates Ctrl+V
+#       Useful for non-US keyboard layouts where ydotool typing fails
+# For multilingual layouts with variants through direct dotool fallback:
+# [output.language_to_variant]
+# ru = "phonetic"
+# dotoolc does not work with variants and cannot receive these hints. When
+# using dotool, switch your desktop layout to Russian phonetic before dictating.
+
+[output.notification]
+on_recording_start = false  # Notify when PTT activates
+on_recording_stop = false   # Notify when transcribing
+on_transcription = false     # Show transcribed text
+
+[audio.feedback]
+enabled = false
+theme = "subtle"  # Built-in themes: default, subtle, mechanical
+volume = 0.1       # 0.0 to 1.0
+
+[text]
+replacements = { "vox type" = "voxtype", "oh marky" = "Omarchy" }
+spoken_punctuation = true

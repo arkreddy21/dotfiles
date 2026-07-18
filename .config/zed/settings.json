@@ -143,7 +143,7 @@
   "sticky_scroll": {
     "enabled": false,
   },
-  "icon_theme": "Colored Zed Icons Theme Dark",
+  "icon_theme": "Material Icon Theme",
   "colorize_brackets": true,
   "auto_update": false,
   "buffer_font_family": "Hack Nerd Font",

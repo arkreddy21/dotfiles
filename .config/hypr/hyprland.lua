@@ -2,7 +2,7 @@ require("hyprland.env")
 require("hyprland.execs")
 require("hyprland.rules")
 require("hyprland.keybinds")
-pcall(require, "monitors")  -- protected call
+require("hyprland.monitors")
 
 
 local primary = "rgb(cba6f7)"     --mocha mauve
@@ -18,17 +18,6 @@ local transparent = "rgba(00000000)"
 -- local secondary = "rgb(89dceb)" -- mocha sky
 -- local error = "rgb(bf616a)"     --nord red
 
-----------------
---- Monitors ---
---- https://wiki.hypr.land/Configuring/Basics/Monitors
--- hl.monitor({
---     output = "",
---     mode = "preferred", -- preferred, highres, highrr
---     position = "auto",  -- auto, auto-right/left/up/down, auto-center-right/left/up/down
---     scale = 1,
--- })
--- hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1, mirror = "DP-1" })
-
 -------------------
 -- Look And Feel --
 hl.config({
@@ -39,9 +28,7 @@ hl.config({
         border_size = 2,
         gaps_workspaces = 50,
         resize_on_border = true,
-        -- no_focus_fallback = true, -- doesn't do anything with focus follow_mouse
-        -- Refer to Tearing if necessary
-        -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing
+        allow_tearing = false,  -- master toggle. setting true with allow immeadiate window rule to take effect
         col = {
             active_border = primary,
             inactive_border = transparent,
@@ -49,7 +36,6 @@ hl.config({
         snap = {
             enabled = true
         },
-        allow_tearing = false,
     },
     decoration = {
         rounding = 12,
@@ -107,7 +93,7 @@ hl.config({
         disable_hyprland_logo = true,   -- If true disables the random hyprland logo / anime girl background. :(
         force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         --font_family = "Noto Sans",
-        vrr = 3,                        -- 3: fullscreen with video or games only
+        vrr = 0,                        -- 3: fullscreen with video or games only
         mouse_move_enables_dpms = true, --switch to false to prevent accidental wake up
         key_press_enables_dpms = true,
 
@@ -128,6 +114,38 @@ hl.config({
     }
 })
 
+----- Inputs and Devices -----
+hl.config({
+    input = {
+        kb_layout = "us",
+        kb_variant = "altgr-intl",   -- other layout+variants: us + altgr-intl,  eu
+        kb_options = "caps:swapescape,rupeesign:4",
+        follow_mouse = 1,
+        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        touchpad = {
+            natural_scroll = true,
+
+            scroll_factor = 1.0,
+            drag_lock = 0, -- 1: delay, 2: sticky
+        }
+    },
+})
+
+hl.device({
+    name = "bluetooth-mouse-m336/m337/m535-mouse",
+    sensitivity = -0.3
+})
+
+hl.device({
+    name = "logitech-optical-usb-mouse",
+    sensitivity = 1
+})
+
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 3, direction = "vertical", action = "special", workspace_name = "magic" })
+hl.gesture({ fingers = 3, direction = "pinch", action = "cursorZoom", mode = "live" })
+
 ---------------
 --- layouts ---
 ---------------
@@ -145,6 +163,7 @@ hl.config({
         column_width = 0.6,
         focus_fit_method = 1,
         follow_focus = true,
+        follow_min_visible = 0
     },
 })
 
@@ -177,7 +196,7 @@ hl.config({
             gaps_out = 12,
             bg_col = surface,
             tile_rounding = 6,
-            -- workspace_method = "first 1", -- [center/first] [workspace] e.g. first 1 or center m+1
+            workspace_method = "eDP-1 first 1, first 11", -- [center/first] [workspace] e.g. first 1 or center m+1
             border_color_focus = primary,
             border_color_hover = secondary,
             label_text_mode = "id",
@@ -187,49 +206,11 @@ hl.config({
             label_color_hover = secondary,
             drag_drop_proxy_color = surfacea,
             drag_drop_proxy_active_color = surfacea
-        },
-        -- dynamic_cursors = {
-        --     mode = 'stretch'
-        -- }
-    },
-})
-
-hl.plugin.hyprexpo.gesture({
-    fingers = 4,
-    direction = "vertical",
-    action = "expo",
-})
-
-hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 3, direction = "vertical", action = "special", workspace_name = "magic" })
-hl.gesture({ fingers = 3, direction = "pinch", action = "cursorZoom", mode = "live" })
-
------ Inputs and Devices -----
-hl.config({
-    input = {
-        kb_layout = "us",
-        kb_variant = "altgr-intl",   -- other layout+variants: us + altgr-intl,  eu
-        kb_options = "caps:swapescape,rupeesign:4",
-        follow_mouse = 1,
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-        touchpad = {
-            natural_scroll = true,
-            scroll_factor = 1.0,
-            drag_lock = 0, -- 1: delay, 2: sticky
         }
     },
 })
-
-hl.device({
-    name = "bluetooth-mouse-m336/m337/m535-mouse",
-    sensitivity = -0.3
-})
-
-hl.device({
-    name = "logitech-optical-usb-mouse",
-    sensitivity = 1
-})
+hl.bind("SUPER + grave", function() hl.plugin.hyprexpo.expo("toggle") end)
+hl.plugin.hyprexpo.gesture({fingers = 4, direction = "vertical", action = "expo"})
 
 -- Required for permission rules to apply (disabled by default)
 -- hl.config({

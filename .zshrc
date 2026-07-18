@@ -42,6 +42,11 @@ alias db="distrobox "
 alias yay="paru "
 alias sys='systemctl '
 
+alias n1='ssh node1.cs.upb.de'
+alias n2='ssh node2.cs.upb.de'
+alias n2p='ssh -L 29000:localhost:29000 arama@node2.cs.upb.de'
+alias n3='ssh node3.cs.upb.de'
+
 alias nap="systemctl suspend"
 alias die="poweroff"
 alias vpn-upb="cd ~/.cert && sudo openvpn --config ~/.cert/upb_linux_udp_redirect.ovpn"
@@ -105,8 +110,13 @@ zinit cdreplay -q
 # bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-#bindkey "\e[1;5C" forward-word
-#bindkey "\e[1;5D" backward-word
+
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+
+bindkey '^[[1;3D' backward-word  # Alt + Left
+bindkey '^[[1;3C' forward-word   # Alt + Right
+bindkey '^[^?' backward-kill-word # Alt+Backspace deletes word
 
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'

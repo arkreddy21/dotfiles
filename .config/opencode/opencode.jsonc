@@ -8,18 +8,21 @@
         "baseURL" : "https://ai-gateway.uni-paderborn.de/v1"
       },
       "models" : {
-        "gwdg.glm-4.7" : {
-          "name" : "GLM 4.7"
-        },
-		    "openai.gpt-5.5": {
-          "name" : "GPT 5.5"
+		    "openai.gpt-5.6-sol": {
+          "name" : "GPT 5.6 Sol"
 		    },
+				"openai.gpt-5.6-terra": {
+          "name" : "GPT 5.6 Terra"
+		    },
+				"openai.gpt-5.6-luna": {
+          "name" : "GPT 5.6 Luna"
+				},
 		    "gwdg.qwen3.5-397b-a17b": {
 		      "name" : "Qwen 3.5 best (397b)"
 		    },
         "gwdg.qwen3.6-35b-a3b": {
           "name" : "Qwen 3.6 35b"
-        }
+        },
       }
     }
   }

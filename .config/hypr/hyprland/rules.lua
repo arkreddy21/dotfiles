@@ -21,7 +21,7 @@ hl.window_rule({
 
 ---- Dialog windows
 local special_windows =
-"^(Open File|Pick File|Select a File|Save a File|Save File|Choose wallpaper|Open Folder|Save As|Library|File Upload|wants to save|wants to open|Save Image|Choose a|Select file|Select what to share|Enter name of file|All Files|Open Document)(.*)$"
+"Open|^(Open (File|Folder|Document)|Save ((a )?File|As|Image|the figure)|Select (a File|file|what to share)|wants to (save|open)|Choose (a|wallpaper|Application)|Pick (a|File)|File Upload|Enter name of file|All Files|Insert Image).*$"
 hl.window_rule({
     match = { title = special_windows },
     float = true,
@@ -94,7 +94,7 @@ hl.window_rule({
     match = { title = pip },
     float = true,
     -- keep_aspect_ratio = true,
-    move = { "monitor_w*0.74", "monitor_h*0.04" },
+    move = { "monitor_w*0.74", "monitor_h*0.74" },
     size = { "monitor_w*0.25", "monitor_h*0.25" },
     pin = true,
     no_initial_focus = true,
@@ -109,7 +109,7 @@ hl.window_rule({ match = { class = "^(steam_app).*" }, immediate = true })
 hl.window_rule({ match = {class = "flameshot"}, no_anim = true, float = true, center = true})
 
 -- prevent kitty from focusing because of ssh pings. or should I add suppress_event = 'activatefocus'
-hl.window_rule({ match = { class = 'kitty' }, focus_on_activate = false })
+hl.window_rule({ match = { class = 'kitty' }, focus_on_activate = false, persistent_size = true })
 
 -- hl.window_rule({
 --     match = { class = "kitty" },

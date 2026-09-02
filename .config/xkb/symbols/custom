@@ -1,0 +1,6 @@
+default partial modifier_keys
+xkb_symbols "ralt_super" {
+    include "us"  # Replace "us" with your primary layout (e.g., "de", "gb") if different
+    key <RALT> { [ Super_R ] };
+    modifier_map Mod4 { <RALT> };
+};

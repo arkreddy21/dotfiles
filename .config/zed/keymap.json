@@ -28,5 +28,29 @@
     "bindings": {
       "ctrl-p": null
     }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-left": "pane::GoBack"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-alt--": "pane::GoBack"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-right": "pane::GoForward"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-alt-_": "pane::GoForward"
+    }
   }
 ]

@@ -1,0 +1,31 @@
+
+stylesheets: ["styles.css"]
+
+windows:
+  # minimum amount of image cards per row on the windows page
+  min_per_row: 3
+  # maximum amount of image cards per row on the windows page
+  max_per_row: 999
+  # number of clicks needed to select a window
+  clicks: 1
+  # spacing in pixels between the window cards
+  spacing: 12
+
+outputs:
+  # number of clicks needed to select an output
+  clicks: 1
+  # spacing in pixels between the outputs in the layout
+  # note: the spacing is applied from both sides (the gap is `spacing * 2`)
+  spacing: 6
+  # show the label with the output name
+  show_label: false
+  # size the output cards respectively to their scaling
+  respect_output_scaling: true
+
+region:
+  # command to run for region selection
+  # the output needs to be in the <output>@<x>,<y>,<w>,<h> (e.g. DP-3@2789,436,756,576) format
+  command: slurp -f '%o@%x,%y,%w,%h'
+
+# hide the token restore checkbox and use the default value instead
+hide_token_restore: false

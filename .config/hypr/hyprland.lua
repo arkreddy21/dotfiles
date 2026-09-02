@@ -111,14 +111,20 @@ hl.config({
     debug = {
         -- overlay = true,
         -- vfr = true
+    },
+    xwayland = {
+      force_zero_scaling = true
+    },
+    ecosystem = {
+        no_donation_nag = true
     }
 })
 
 ----- Inputs and Devices -----
 hl.config({
     input = {
-        kb_layout = "us",
-        kb_variant = "altgr-intl",   -- other layout+variants: us + altgr-intl,  eu
+        kb_layout = "custom",
+        kb_variant = "ralt_super",   -- other layout+variants: us + altgr-intl,  eu
         kb_options = "caps:swapescape,rupeesign:4",
         follow_mouse = 1,
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.

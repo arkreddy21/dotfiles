@@ -5,6 +5,7 @@ hl.on("hyprland.start", function()
     -- hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     -- hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
 
+    hl.exec_cmd("/usr/lib/pam_kwallet_init")
     hl.exec_cmd("noctalia")
     hl.exec_cmd("hyprpm reload")
     hl.exec_cmd("hyprctl setcursor Breeze_Light 24")

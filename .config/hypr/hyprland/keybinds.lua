@@ -8,7 +8,7 @@ local fileManager = "dolphin"
 local browser = "zen-browser"
 local taskmanager = "kitty -e btop"
 -- local menu = "rofi -show drun"
-local menu = ipc .. " panel-toggle launcher"
+local menu = ipc .. "panel-toggle launcher"
 
 ----------------------------------------------------------------------------------
 -- ##! Actions
@@ -17,7 +17,7 @@ local menu = ipc .. " panel-toggle launcher"
 --hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd("wlogout -p layer-shell"))
 hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd(ipc .. "bar-toggle"))
 hl.bind(mainMod .. " + ALT + Delete", hl.dsp.exec_cmd(ipc .. "panel-open session"))
-hl.bind("ALT + Tab", hl.dsp.exec_cmd("noctalia msg window-switcher"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc.."window-switcher"))
 
 hl.bind(mainMod .. " + X", hl.dsp.window.close(), {desc = "close active window"})
 hl.bind(mainMod .. " + ALT + X", hl.dsp.window.kill(), {desc = "kill active window"})
@@ -90,7 +90,7 @@ hl.bind(mainMod .. " + ALT+ P", hl.dsp.window.pin())
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + ALT + mouse:272", hl.dsp.window.resize(), { mouse = true })
-hl.bind(mainMod .. " + ALT + Backslash", hl.dsp.window.resize({ x = 720, y = 540, "exact" })) --make window not amogus large
+hl.bind(mainMod .. " + ALT + Backslash", hl.dsp.window.resize({ x = 960, y = 720, "exact" })) --make window not amogus large
 
 -- Window groups
 hl.bind(mainMod .. " + T", hl.dsp.group.toggle())
@@ -174,18 +174,18 @@ hl.bind(mainMod .. " + CTRL + Page_Up", hl.dsp.window.move({ workspace = "r-1", 
 
 -- #### MISC ########################################################
 
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
-
 -- Media keys
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. " volume-up"), { repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. " volume-down"), { repeating = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. " volume-mute"), { locked = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. " mic-mute"), { locked = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. " brightness-up"), { locked = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. " brightness-down"), { locked = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"), { locked = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. "mic-mute"), { locked = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"), { locked = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"), { locked = true })
+
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd(ipc .. "media toggle"), { locked = true })
+-- hl.bind("XF86AudioPause", hl.dsp.exec_cmd(ipc .. "media toggle"), { locked = true })
+-- hl.bind("XF86AudioNext", hl.dsp.exec_cmd(ipc .. "media next"), { locked = true })
+-- hl.bind("XF86AudioPrev", hl.dsp.exec_cmd(ipc .. "media previous"), { locked = true })
 
 ---------------------------------------------
 --- Old and unnecessary

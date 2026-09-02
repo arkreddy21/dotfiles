@@ -44,3 +44,6 @@ volume = 0.1       # 0.0 to 1.0
 [text]
 replacements = { "vox type" = "voxtype", "oh marky" = "Omarchy" }
 spoken_punctuation = true
+
+[osd]
+enabled = false

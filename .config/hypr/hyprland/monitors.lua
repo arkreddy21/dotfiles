@@ -1,7 +1,7 @@
 ----------------
 --- Monitors ---
 --- https://wiki.hypr.land/Configuring/Basics/Monitors
-local laptopMonitor = { output = "eDP-1", mode = "highres", scale = 1 }
+local laptopMonitor = { output = "eDP-1", mode = "highres", position = "0x0", scale = 1 }
 hl.monitor(laptopMonitor)
 
 hl.monitor({ -- E303 pool room

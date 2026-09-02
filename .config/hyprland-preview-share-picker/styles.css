@@ -1,0 +1,23 @@
+.window {
+    background-color: #1e1e2e;
+    border-radius: 12px;
+}
+
+.notebook {
+    background-color: #1e1e2e;
+}
+.page {
+    padding: 12px;
+}
+
+.image {
+    padding: 8px
+}
+.image-label {
+    padding: 8px;
+}
+
+.restore-button {
+    background-color: #1e1e2e;
+    padding: 8px;
+}

@@ -7,31 +7,32 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "restore_on_startup": "launchpad",
   "vim": {
     "use_smartcase_find": true,
-    "toggle_relative_line_numbers": true
+    "toggle_relative_line_numbers": true,
   },
   "vim_mode": false,
   "terminal": {
-    "dock": "bottom"
+    "dock": "bottom",
   },
   "gutter": {
-    "line_numbers": true
+    "line_numbers": true,
   },
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
   },
   "ensure_final_newline_on_save": false,
   "ui_font_size": 18.0,
   "ui_font_family": ".ZedSans",
   "tabs": {
     "file_icons": true,
-    "git_status": false
+    "git_status": false,
   },
   "tab_bar": {
     "show_tab_bar_buttons": true,
     "show_nav_history_buttons": false,
-    "show": true
+    "show": true,
   },
   "title_bar": {
     "button_layout": "platform_default",
@@ -40,19 +41,19 @@
     "show_sign_in": false,
     "show_project_items": true,
     "show_branch_name": true,
-    "show_branch_status_icon": false
+    "show_branch_status_icon": false,
   },
   "cli_default_open_behavior": "existing_window",
   "project_panel": {
     "button": true,
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
     "button": false,
-    "dock": "right"
+    "dock": "right",
   },
   "remove_trailing_whitespace_on_save": false,
   "disable_ai": true,
@@ -94,7 +95,7 @@
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
-      "enable_next_edit_suggestions": true
+      "enable_next_edit_suggestions": true,
     },
     "provider": "copilot",
   },
@@ -104,10 +105,10 @@
         "model": [
           "upb/gwdg.qwen3.5-397b-a17b",
           "upb/openai.gpt-5.4",
-          "upb/openai.gpt-5.3-codex"
-        ]
+          "upb/openai.gpt-5.3-codex",
+        ],
       },
-      "type": "registry"
+      "type": "registry",
     },
     "github-copilot": {
       "favorite_models": [
@@ -164,9 +165,9 @@
   "languages": {
     "LaTeX": {
       "inlay_hints": {
-        "enabled": false
+        "enabled": false,
       },
-      "soft_wrap": "editor_width"
+      "soft_wrap": "editor_width",
     },
     "JavaScript": {
       "tab_size": 2,
@@ -183,10 +184,20 @@
       "settings": {
         "texlab": {
           "build": {
-            "onSave": false
-          }
-        }
-      }
-    }
-  }
+            "onSave": false,
+          },
+        },
+      },
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "checkOnSave": false,
+        "cargo": {
+          "buildScripts": {
+            "enable": false,
+          },
+        },
+      },
+    },
+  },
 }
